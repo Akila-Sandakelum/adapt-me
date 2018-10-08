@@ -1,7 +1,8 @@
 import React from "react";
 import pf from "petfinder-client";
+import { Consumer } from "./SearchContext";
 import Pet from "./Pet";
-import SearchParams from "./SearchParams";
+import Searchbox from "./Searchbox";
 
 const petfinder = pf({
   key: "d9a488ece7b73b809ceb4c3555372d27",
@@ -21,9 +22,19 @@ class Results extends React.Component {
   }
 
   componentDidMount() {
+    console.log("loaded");
+    this.search();
+  }
+
+  search = () => {
     // Making API call and retrieve the data back and populare pets array
     petfinder.pet
-      .find({ output: "full", location: "Seatle, WA " })
+      .find({
+        output: "full",
+        location: this.props.searchParams.location,
+        animal: this.props.searchParams.animal,
+        breed: this.props.searchParams.breed
+      })
       .then(data => {
         let pets;
 
@@ -42,7 +53,7 @@ class Results extends React.Component {
           pets
         });
       });
-  }
+  };
 
   render() {
     /* return React.createElement("div", {}, [
@@ -65,7 +76,7 @@ class Results extends React.Component {
         ]); */
     return (
       <div className="search">
-        <SearchParams />
+        <Searchbox search={this.search} />
         {this.state.pets.map(pet => {
           let breed;
 
@@ -116,4 +127,13 @@ class Results extends React.Component {
     );
 } */
 
-export default Results;
+// If we want to access context within react lifecycle methods we have to
+// write the <Consumer> as below. Otherwise we can directly use the <Consumer>
+// inside the render method as if we have done in <SearchBox> component
+export default function ResultsWithContext(props) {
+  return (
+    <Consumer>
+      {context => <Results {...props} searchParams={context} />}
+    </Consumer>
+  );
+}
