@@ -62,7 +62,7 @@ class Details extends React.Component {
     return (
       <div className="details">
         <Carousel media={media} />
-        <div onClick={console.log}>
+        <div>
           <h1> {name}</h1>
           <h2>
             {animal} - {breed} -{location}
