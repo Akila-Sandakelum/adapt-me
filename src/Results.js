@@ -1,6 +1,7 @@
 import React from "react";
 import pf from "petfinder-client";
 import Pet from "./Pet";
+import SearchParams from "./SearchParams";
 
 const petfinder = pf({
   key: "d9a488ece7b73b809ceb4c3555372d27",
@@ -64,6 +65,7 @@ class Results extends React.Component {
         ]); */
     return (
       <div className="search">
+        <SearchParams />
         {this.state.pets.map(pet => {
           let breed;
 
