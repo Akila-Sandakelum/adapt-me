@@ -9,7 +9,9 @@
     "lint": "eslint \"src/**/*.{js,jsx}\"",
     "dev": "parcel src/index.html",
     "test": "jest --silent",
-    "test:update": "jest --silent -u"
+    "test:update": "jest --silent -u",
+    "test:watch": "jest --silent --watch",
+    "test:coverage": "jest --silent --coverage"
   },
   "keywords": [],
   "author": "Akila Sandakelum",
@@ -33,8 +35,10 @@
   },
   "dependencies": {
     "@reach/router": "^1.2.1",
+    "emotion": "^9.2.12",
     "petfinder-client": "0.0.3",
     "react": "^16.5.2",
-    "react-dom": "^16.5.2"
+    "react-dom": "^16.5.2",
+    "react-emotion": "^9.2.12"
   }
 }
