@@ -22,7 +22,6 @@ class Results extends React.Component {
   }
 
   componentDidMount() {
-    console.log("loaded");
     this.search();
   }
 
