@@ -1,5 +1,4 @@
 import React from "react";
-import { render } from "react-dom";
 import { Router } from "@reach/router";
 import { Provider } from "react-redux";
 import Loadable from "react-loadable";
@@ -44,4 +43,4 @@ class App extends React.Component {
   }
 }
 
-render(<App />, document.getElementById("root"));
+export default App;
